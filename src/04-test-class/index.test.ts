@@ -1,5 +1,10 @@
 // Uncomment the code below and write your tests
-import { getBankAccount, InsufficientFundsError, SynchronizationFailedError, TransferFailedError } from ".";
+import {
+  getBankAccount,
+  InsufficientFundsError,
+  SynchronizationFailedError,
+  TransferFailedError,
+} from '.';
 
 describe('BankAccount', () => {
   test('should create account with initial balance', () => {
@@ -64,8 +69,7 @@ describe('BankAccount', () => {
       try {
         await bankAccount.synchronizeBalance();
         expect(bankAccount.getBalance()).not.toBe(balance);
-      }
-      catch (error) {}
+      } catch (error) {}
     } else {
       expect(balance).toBe(null);
     }
@@ -75,8 +79,7 @@ describe('BankAccount', () => {
     const bankAccount = getBankAccount(100);
     try {
       await bankAccount.fetchBalance();
-    }
-    catch (error) {
+    } catch (error) {
       expect(error).toBeInstanceOf(SynchronizationFailedError);
     }
   });
